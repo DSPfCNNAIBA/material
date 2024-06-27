@@ -1,0 +1,119 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: suricata
+  labels:
+    app: suricata
+spec:
+  selector:
+    matchLabels:
+      app: suricata
+  template:
+    metadata:
+      labels:
+        app: suricata
+        "spiffe.io/spiffe-id": "true"
+    spec:
+      containers:
+      - name: nse
+        image: ghcr.io/networkservicemesh/cmd-nse-icmp-responder:v1.11.0
+        imagePullPolicy: IfNotPresent
+        securityContext:
+          privileged: true
+        env:
+        - name: SPIFFE_ENDPOINT_SOCKET
+          value: unix:///run/spire/sockets/agent.sock
+        - name: NSM_LABELS
+          value: "app:suricata"
+        - name: NSM_SERVICE_NAMES
+          value: "webserver-b"
+        - name: NSM_LOG_LEVEL
+          value: TRACE
+        - name: NSM_CIDR_PREFIX
+          value: 172.16.0.0/31
+        - name: NSM_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: NSM_CONNECT_TO
+          value: unix:///var/lib/networkservicemesh/nsm.io.sock
+        - name: NSM_REGISTER_SERVICE
+          value: "false"
+        volumeMounts:
+        - name: spire-agent-socket
+          mountPath: /run/spire/sockets
+          readOnly: true
+        - name: nsm-socket
+          mountPath: /var/lib/networkservicemesh
+          readOnly: true
+        resources:
+          requests:
+            cpu: 100m
+            memory: 40Mi
+          limits:
+            memory: 80Mi
+            cpu: 200m
+      - name: cmd-nsc
+        image: ghcr.io/networkservicemesh/cmd-nsc:v1.11.0
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: SPIFFE_ENDPOINT_SOCKET
+          value: unix:///run/spire/sockets/agent.sock
+        - name: NSM_REGISTER_SERVICE
+          value: "false"
+        - name: NSM_NETWORK_SERVICES
+          value: kernel://webserver-b/suricataint?app=suricata
+        - name: NSM_LOG_LEVEL
+          value: TRACE
+        - name: NSM_CONNECT_TO
+          value: unix:///var/lib/networkservicemesh/nsm.io.sock
+        volumeMounts:
+        - name: spire-agent-socket
+          mountPath: /run/spire/sockets
+          readOnly: true
+        - name: nsm-socket
+          mountPath: /var/lib/networkservicemesh
+          readOnly: true
+        resources:
+          requests:
+            cpu: 100m
+            memory: 40Mi
+          limits:
+            memory: 80Mi
+            cpu: 200m
+      - name: suricata
+        image: jasonish/suricata
+        imagePullPolicy: IfNotPresent
+        securityContext:
+          privileged: true
+        command: ["sh", "-c", "sleep infinity"]
+        volumeMounts:
+        - name: suricata-rules
+          mountPath: /additional/rules/local
+          readOnly: false
+        - name: suricata-logs
+          mountPath: /var/log/suricata
+        - name: suricata-config
+          mountPath: /etc/suricata
+      volumes:
+      - name: spire-agent-socket
+        hostPath:
+          path: /run/spire/sockets
+          type: Directory
+      - name: nsm-socket
+        hostPath:
+          path: /var/lib/networkservicemesh
+          type: DirectoryOrCreate
+      - name: suricata-rules
+        configMap:
+            name: suricata-rules
+      - name: suricata-config
+        configMap:
+            name: suricata-config      
+      - name: suricata-logs
+        persistentVolumeClaim:
+            claimName: suricata-pvc
+
+
+
+        

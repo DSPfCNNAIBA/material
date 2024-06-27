@@ -1,0 +1,5 @@
+zams@zams-laptop:~/Scrivania/Work/Playgroud$ kubectl get pods -n enf-ns 
+NAME                           READY   STATUS    RESTARTS   AGE
+iptables-sf-69896f95fc-749r4   3/3     Running   0          17s
+nsc                            2/2     Running   0          17s
+nse-kernel-5c57485bb7-qmnv9    3/3     Running   0          17s

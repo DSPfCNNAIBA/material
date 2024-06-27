@@ -1,0 +1,19 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: kind-hostpath
+provisioner: docker.io/hostpath
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: squid-pv
+spec:
+  capacity:
+    storage: 600Mi 
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Delete
+  storageClassName: kind-hostpath
+  hostPath:
+    path: /mnt

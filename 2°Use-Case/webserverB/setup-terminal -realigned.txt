@@ -1,0 +1,116 @@
+kubectl get pods -n webserver-b -o wide
+NAME                          READY   STATUS    RESTARTS   AGE     IP             NODE                NOMINATED NODE   READINESS GATES
+nsc                           2/2     Running   0          6m25s   10.244.0.98    nsm-control-plane   <none>           <none>
+nse-kernel-866cdc857b-czlb5   2/2     Running   0          6m25s   10.244.0.97    nsm-control-plane   <none>           <none>
+squid-7ffdfcd6b4-fzwjx        3/3     Running   0          53s     10.244.0.102   nsm-control-plane   <none>           <none>
+suricata-7c884d969c-d9mkv     3/3     Running   0          53s     10.244.0.103   nsm-control-plane   <none>           <none>
+
+kubectl exec -it -n webserver-b nsc -- /bin/sh
+Defaulted container "alpine" out of: alpine, cmd-nsc, cmd-nsc-init (init)
+/ # ip a s
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0@if99: <BROADCAST,MULTICAST,UP,LOWER_UP,M-DOWN> mtu 1500 qdisc noqueue state UP 
+    link/ether 2e:a9:11:97:e7:8e brd ff:ff:ff:ff:ff:ff
+    inet 10.244.0.98/24 brd 10.244.0.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::2ca9:11ff:fe97:e78e/64 scope link 
+       valid_lft forever preferred_lft forever
+4: intclient: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 9000 qdisc mq state UNKNOWN qlen 1000
+    link/ether 02:fe:ab:75:5c:80 brd ff:ff:ff:ff:ff:ff
+    inet 172.16.0.1/32 scope global intclient
+       valid_lft forever preferred_lft forever
+    inet 172.16.1.1/32 scope global intclient
+       valid_lft forever preferred_lft forever
+    inet6 fe80::fe:abff:fe75:5c80/64 scope link 
+       valid_lft forever preferred_lft forever
+/ # 
+
+
+
+kubectl exec -it -n webserver-b suricata-7c884d969c-xwcj8 -- /bin/sh
+Defaulted container "nse" out of: nse, cmd-nsc, suricata
+/ # ip a s
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0@if110: <BROADCAST,MULTICAST,UP,LOWER_UP,M-DOWN> mtu 1500 qdisc noqueue state UP 
+    link/ether 06:4e:01:be:a6:fa brd ff:ff:ff:ff:ff:ff
+    inet 10.244.0.109/24 brd 10.244.0.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::44e:1ff:febe:a6fa/64 scope link 
+       valid_lft forever preferred_lft forever
+3: suricataint: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 9000 qdisc mq state UNKNOWN qlen 1000
+    link/ether 02:fe:36:1a:a3:8e brd ff:ff:ff:ff:ff:ff
+    inet 172.16.1.1/32 scope global suricataint
+       valid_lft forever preferred_lft forever
+    inet6 fe80::fe:36ff:fe1a:a38e/64 scope link 
+       valid_lft forever preferred_lft forever
+4: webserver--d690: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 9000 qdisc mq state UNKNOWN qlen 1000
+    link/ether 02:fe:b6:be:d1:a4 brd ff:ff:ff:ff:ff:ff
+    inet 172.16.0.0/32 scope global webserver--d690
+       valid_lft forever preferred_lft forever
+    inet6 fe80::fe:b6ff:febe:d1a4/64 scope link 
+       valid_lft forever preferred_lft forever
+/ # 
+
+
+kubectl exec -it -n webserver-b squid-7ffdfcd6b4-fzwjx -- /bin/sh
+Defaulted container "nse" out of: nse, cmd-nsc, squid
+/ # ip a s
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0@if103: <BROADCAST,MULTICAST,UP,LOWER_UP,M-DOWN> mtu 1500 qdisc noqueue state UP 
+    link/ether 1e:7c:c9:0b:a9:03 brd ff:ff:ff:ff:ff:ff
+    inet 10.244.0.102/24 brd 10.244.0.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::1c7c:c9ff:fe0b:a903/64 scope link 
+       valid_lft forever preferred_lft forever
+3: webserver--4ae7: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 9000 qdisc mq state UNKNOWN qlen 1000
+    link/ether 02:fe:b6:5b:55:81 brd ff:ff:ff:ff:ff:ff
+    inet 172.16.1.0/32 scope global webserver--4ae7
+       valid_lft forever preferred_lft forever
+    inet 172.16.1.0/32 scope global webserver--4ae7
+       valid_lft forever preferred_lft forever
+    inet6 fe80::fe:b6ff:fe5b:5581/64 scope link 
+       valid_lft forever preferred_lft forever
+4: squidint: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 9000 qdisc mq state UNKNOWN qlen 1000
+    link/ether 02:fe:7d:53:c4:91 brd ff:ff:ff:ff:ff:ff
+    inet 172.16.1.101/32 scope global squidint
+       valid_lft forever preferred_lft forever
+    inet6 fe80::fe:7dff:fe53:c491/64 scope link tentative 
+       valid_lft forever preferred_lft forever
+
+kubectl exec -it -n webserver-b nse-kernel-866cdc857b-dfb25 -- /bin/sh
+Defaulted container "nse" out of: nse, nginx
+/ # ip a s
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0@if106: <BROADCAST,MULTICAST,UP,LOWER_UP,M-DOWN> mtu 1500 qdisc noqueue state UP 
+    link/ether 6a:e0:d5:08:10:aa brd ff:ff:ff:ff:ff:ff
+    inet 10.244.0.105/24 brd 10.244.0.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::68e0:d5ff:fe08:10aa/64 scope link 
+       valid_lft forever preferred_lft forever
+3: webserver--fc8e: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 9000 qdisc mq state UNKNOWN qlen 1000
+    link/ether 02:fe:ea:f1:21:c9 brd ff:ff:ff:ff:ff:ff
+    inet 172.16.1.100/32 scope global webserver--fc8e
+       valid_lft forever preferred_lft forever
+    inet6 fe80::fe:eaff:fef1:21c9/64 scope link 
+       valid_lft forever preferred_lft forever
+/ # 

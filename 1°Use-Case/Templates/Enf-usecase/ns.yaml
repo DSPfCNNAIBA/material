@@ -1,0 +1,16 @@
+---
+apiVersion: networkservicemesh.io/v1
+kind: NetworkService
+metadata:
+  name: enforcment-scenario
+spec:
+  payload: ETHERNET
+  matches:
+    - source_selector:
+        app: iptables-sf
+      routes:
+        - destination_selector:
+            app: gateway
+    - routes:
+        - destination_selector:
+            app: iptables-sf

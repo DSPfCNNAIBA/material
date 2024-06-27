@@ -1,0 +1,5 @@
+INTERFACE=$(ip -o -4 addr list | grep "172.16.1.0/32" | awk '{print $2}')
+iptables -t nat -A PREROUTING -i $INTERFACE -p tcp --dport 8080 -j DNAT --to 172.16.1.100
+iptables -A FORWARD -i $INTERFACE -o squidint -j ACCEPT
+iptables -A FORWARD -i squidint -o $INTERFACE -j ACCEPT
+iptables -t nat -A POSTROUTING -o squidint -j SNAT --to 172.16.1.101

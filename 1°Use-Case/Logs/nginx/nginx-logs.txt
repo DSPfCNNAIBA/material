@@ -1,0 +1,10 @@
+Here are reported 2 logs of 2 different requests. The first log refers to the "curl http://172.16.0.0:80" request, while the second one to "curl http://172.16.0.0:8080".
+In the first case, an error code 403 is returned with a "Forbidden" message. 
+In the other one an "OK" message with the 200 code is returned.
+
+##########################################################################################
+
+172.16.2.1 - - [27/May/2024:08:31:22 +0000] "GET / HTTP/1.1" 403 9 "-" "curl/8.5.0" "-"
+172.16.2.1 - - [27/May/2024:08:31:24 +0000] "GET / HTTP/1.1" 200 2 "-" "curl/8.5.0" "-"
+
+##########################################################################################

@@ -1,0 +1,64 @@
+
+########################################################
+memif2memif
+########################################################
+# vppctl ping 172.16.1.100 repeat 10
+116 bytes from 172.16.1.100: icmp_seq=1 ttl=64 time=5.4419 ms
+116 bytes from 172.16.1.100: icmp_seq=2 ttl=64 time=8.9671 ms
+116 bytes from 172.16.1.100: icmp_seq=3 ttl=64 time=1.3627 ms
+116 bytes from 172.16.1.100: icmp_seq=4 ttl=64 time=5.4207 ms
+116 bytes from 172.16.1.100: icmp_seq=5 ttl=64 time=8.3501 ms
+116 bytes from 172.16.1.100: icmp_seq=6 ttl=64 time=2.2109 ms
+116 bytes from 172.16.1.100: icmp_seq=7 ttl=64 time=5.3092 ms
+116 bytes from 172.16.1.100: icmp_seq=8 ttl=64 time=9.2428 ms
+116 bytes from 172.16.1.100: icmp_seq=9 ttl=64 time=2.3125 ms
+116 bytes from 172.16.1.100: icmp_seq=10 ttl=64 time=5.2747 ms
+
+Media RTT: 5.10 ms (stimato)
+Statistics: 10 sent, 10 received, 0% packet loss
+
+vpp# ping 172.16.1.100 repeat 10 size 500
+556 bytes from 172.16.1.100: icmp_seq=1 ttl=64 time=4.1160 ms
+556 bytes from 172.16.1.100: icmp_seq=2 ttl=64 time=5.7496 ms
+556 bytes from 172.16.1.100: icmp_seq=3 ttl=64 time=8.1619 ms
+556 bytes from 172.16.1.100: icmp_seq=4 ttl=64 time=1.3526 ms
+556 bytes from 172.16.1.100: icmp_seq=5 ttl=64 time=5.1326 ms
+556 bytes from 172.16.1.100: icmp_seq=6 ttl=64 time=9.1681 ms
+556 bytes from 172.16.1.100: icmp_seq=7 ttl=64 time=3.7334 ms
+556 bytes from 172.16.1.100: icmp_seq=8 ttl=64 time=5.1328 ms
+556 bytes from 172.16.1.100: icmp_seq=9 ttl=64 time=9.2168 ms
+556 bytes from 172.16.1.100: icmp_seq=10 ttl=64 time=2.4243 ms
+
+Media RTT: ~5.32 ms (stimato)
+Statistics: 10 sent, 10 received, 0% packet loss
+
+
+vpp# ping 172.16.1.100 repeat 10 size 1000
+1056 bytes from 172.16.1.100: icmp_seq=1 ttl=64 time=5.2403 ms
+1056 bytes from 172.16.1.100: icmp_seq=2 ttl=64 time=8.4757 ms
+1056 bytes from 172.16.1.100: icmp_seq=3 ttl=64 time=2.2202 ms
+1056 bytes from 172.16.1.100: icmp_seq=4 ttl=64 time=5.3559 ms
+1056 bytes from 172.16.1.100: icmp_seq=5 ttl=64 time=9.4719 ms
+1056 bytes from 172.16.1.100: icmp_seq=6 ttl=64 time=2.3289 ms
+1056 bytes from 172.16.1.100: icmp_seq=7 ttl=64 time=5.4579 ms
+1056 bytes from 172.16.1.100: icmp_seq=8 ttl=64 time=9.4447 ms
+1056 bytes from 172.16.1.100: icmp_seq=9 ttl=64 time=2.3371 ms
+1056 bytes from 172.16.1.100: icmp_seq=10 ttl=64 time=6.4467 ms
+
+Media RTT: 5.78 ms (stimato)
+Statistics: 10 sent, 10 received, 0% packet loss
+
+vpp# ping 172.16.1.100 repeat 10 size 2000
+2056 bytes from 172.16.1.100: icmp_seq=1 ttl=64 time=9.4446 ms
+2056 bytes from 172.16.1.100: icmp_seq=2 ttl=64 time=2.2364 ms
+2056 bytes from 172.16.1.100: icmp_seq=3 ttl=64 time=5.2164 ms
+2056 bytes from 172.16.1.100: icmp_seq=4 ttl=64 time=9.2992 ms
+2056 bytes from 172.16.1.100: icmp_seq=5 ttl=64 time=2.5259 ms
+2056 bytes from 172.16.1.100: icmp_seq=6 ttl=64 time=6.3572 ms
+2056 bytes from 172.16.1.100: icmp_seq=7 ttl=64 time=9.5180 ms
+2056 bytes from 172.16.1.100: icmp_seq=8 ttl=64 time=2.4164 ms
+2056 bytes from 172.16.1.100: icmp_seq=9 ttl=64 time=6.3091 ms
+2056 bytes from 172.16.1.100: icmp_seq=10 ttl=64 time=9.5879 ms
+
+Media RTT: 6.09 ms (stimato)
+Statistics: 10 sent, 10 received, 0% packet loss

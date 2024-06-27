@@ -1,0 +1,119 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: squid
+  labels:
+    app: squid
+spec:
+  selector:
+    matchLabels:
+      app: squid
+  template:
+    metadata:
+      labels:
+        app: squid
+        "spiffe.io/spiffe-id": "true"
+    spec:
+      containers:
+      - name: nse
+        image: ghcr.io/networkservicemesh/cmd-nse-icmp-responder:v1.11.0
+        imagePullPolicy: IfNotPresent
+        securityContext:
+          privileged: true
+        env:
+        - name: SPIFFE_ENDPOINT_SOCKET
+          value: unix:///run/spire/sockets/agent.sock
+        - name: NSM_LABELS
+          value: "app:squid"
+        - name: NSM_SERVICE_NAMES
+          value: "webserver-b"
+        - name: NSM_LOG_LEVEL
+          value: TRACE
+        - name: NSM_CIDR_PREFIX
+          value: 172.16.1.0/31
+        - name: NSM_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: NSM_CONNECT_TO
+          value: unix:///var/lib/networkservicemesh/nsm.io.sock
+        - name: NSM_REGISTER_SERVICE
+          value: "false"
+        volumeMounts:
+        - name: spire-agent-socket
+          mountPath: /run/spire/sockets
+          readOnly: true
+        - name: nsm-socket
+          mountPath: /var/lib/networkservicemesh
+          readOnly: true
+        resources:
+          requests:
+            cpu: 100m
+            memory: 40Mi
+          limits:
+            memory: 80Mi
+            cpu: 200m
+      - name: cmd-nsc
+        image: ghcr.io/networkservicemesh/cmd-nsc:v1.11.0
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: SPIFFE_ENDPOINT_SOCKET
+          value: unix:///run/spire/sockets/agent.sock
+        - name: NSM_REGISTER_SERVICE
+          value: "false"
+        - name: NSM_NETWORK_SERVICES
+          value: kernel://webserver-b/squidint?app=squid
+        - name: NSM_LOG_LEVEL
+          value: TRACE
+        - name: NSM_CONNECT_TO
+          value: unix:///var/lib/networkservicemesh/nsm.io.sock
+        volumeMounts:
+        - name: spire-agent-socket
+          mountPath: /run/spire/sockets
+          readOnly: true
+        - name: nsm-socket
+          mountPath: /var/lib/networkservicemesh
+          readOnly: true
+        resources:
+          requests:
+            cpu: 100m
+            memory: 40Mi
+          limits:
+            memory: 80Mi
+            cpu: 200m
+      - name: squid
+        image: ubuntu/squid:edge
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+        - containerPort: 8080
+          name: squid
+          protocol: TCP
+        volumeMounts:
+          - name: squid-config-volume
+            mountPath: /etc/squid/squid.conf
+            subPath: squid.conf
+          - mountPath: /var/cache/squid
+            name: squid-cache
+          - mountPath: /var/log/squid
+            name: squid-log
+      volumes:
+      - name: spire-agent-socket
+        hostPath:
+          path: /run/spire/sockets
+          type: Directory
+      - name: nsm-socket
+        hostPath:
+          path: /var/lib/networkservicemesh
+          type: DirectoryOrCreate
+      - name: squid-config-volume
+        configMap:
+          name: squid-config
+      - name: squid-cache
+        emptyDir: {}
+      - name: squid-log
+        emptyDir: {}
+
+
+
+        

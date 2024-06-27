@@ -1,0 +1,209 @@
+##########################################################################################
+The ping metrics reported in this file are related to the case where a chain is exploited.
+Indeed there is a routing of the traffic from a kernel interface to another one.
+These metrics are obtained after the usage of the iptables rules provided in the pod in 
+the middle of the chain
+##########################################################################################
+
+/ # fping -c 10 -q 172.16.0.0
+172.16.0.0 : xmt/rcv/%loss = 10/10/0%, min/avg/max = 0.296/0.780/1.39
+
+/ # fping -c 10 -q 172.16.0.0
+172.16.0.0 : xmt/rcv/%loss = 10/10/0%, min/avg/max = 0.393/0.825/1.29
+
+/ # ping -c 10 172.16.0.0
+PING 172.16.0.0 (172.16.0.0): 56 data bytes
+64 bytes from 172.16.0.0: seq=0 ttl=63 time=3.568 ms
+64 bytes from 172.16.0.0: seq=1 ttl=63 time=1.319 ms
+64 bytes from 172.16.0.0: seq=2 ttl=63 time=0.891 ms
+64 bytes from 172.16.0.0: seq=3 ttl=63 time=0.918 ms
+64 bytes from 172.16.0.0: seq=4 ttl=63 time=1.380 ms
+64 bytes from 172.16.0.0: seq=5 ttl=63 time=1.440 ms
+64 bytes from 172.16.0.0: seq=6 ttl=63 time=0.798 ms
+64 bytes from 172.16.0.0: seq=7 ttl=63 time=0.646 ms
+64 bytes from 172.16.0.0: seq=8 ttl=63 time=1.258 ms
+64 bytes from 172.16.0.0: seq=9 ttl=63 time=1.249 ms
+
+--- 172.16.0.0 ping statistics ---
+10 packets transmitted, 10 packets received, 0% packet loss
+round-trip min/avg/max = 0.646/1.346/3.568 ms
+
+/ # ping 172.16.0.0 -s 1000 -c 10
+PING 172.16.0.0 (172.16.0.0): 1000 data bytes
+1008 bytes from 172.16.0.0: seq=0 ttl=63 time=1.125 ms
+1008 bytes from 172.16.0.0: seq=1 ttl=63 time=1.244 ms
+1008 bytes from 172.16.0.0: seq=2 ttl=63 time=1.260 ms
+1008 bytes from 172.16.0.0: seq=3 ttl=63 time=1.352 ms
+1008 bytes from 172.16.0.0: seq=4 ttl=63 time=1.273 ms
+1008 bytes from 172.16.0.0: seq=5 ttl=63 time=0.719 ms
+1008 bytes from 172.16.0.0: seq=6 ttl=63 time=1.247 ms
+1008 bytes from 172.16.0.0: seq=7 ttl=63 time=0.605 ms
+1008 bytes from 172.16.0.0: seq=8 ttl=63 time=1.327 ms
+1008 bytes from 172.16.0.0: seq=9 ttl=63 time=1.263 ms
+
+--- 172.16.0.0 ping statistics ---
+10 packets transmitted, 10 packets received, 0% packet loss
+round-trip min/avg/max = 0.605/1.141/1.352 ms
+/ # ping 172.16.0.0 -s 1000 -c 10
+PING 172.16.0.0 (172.16.0.0): 1000 data bytes
+1008 bytes from 172.16.0.0: seq=0 ttl=63 time=1.034 ms
+1008 bytes from 172.16.0.0: seq=1 ttl=63 time=1.250 ms
+1008 bytes from 172.16.0.0: seq=2 ttl=63 time=1.284 ms
+1008 bytes from 172.16.0.0: seq=3 ttl=63 time=0.955 ms
+1008 bytes from 172.16.0.0: seq=4 ttl=63 time=1.365 ms
+1008 bytes from 172.16.0.0: seq=5 ttl=63 time=0.601 ms
+1008 bytes from 172.16.0.0: seq=6 ttl=63 time=0.636 ms
+1008 bytes from 172.16.0.0: seq=7 ttl=63 time=0.368 ms
+1008 bytes from 172.16.0.0: seq=8 ttl=63 time=1.010 ms
+1008 bytes from 172.16.0.0: seq=9 ttl=63 time=1.345 ms
+
+--- 172.16.0.0 ping statistics ---
+10 packets transmitted, 10 packets received, 0% packet loss
+round-trip min/avg/max = 0.368/0.984/1.365 ms
+/ # ping 172.16.0.0 -s 1000 -c 10
+PING 172.16.0.0 (172.16.0.0): 1000 data bytes
+1008 bytes from 172.16.0.0: seq=0 ttl=63 time=0.811 ms
+1008 bytes from 172.16.0.0: seq=1 ttl=63 time=1.058 ms
+1008 bytes from 172.16.0.0: seq=2 ttl=63 time=0.240 ms
+1008 bytes from 172.16.0.0: seq=3 ttl=63 time=1.340 ms
+1008 bytes from 172.16.0.0: seq=4 ttl=63 time=0.426 ms
+1008 bytes from 172.16.0.0: seq=5 ttl=63 time=0.498 ms
+1008 bytes from 172.16.0.0: seq=6 ttl=63 time=0.776 ms
+1008 bytes from 172.16.0.0: seq=7 ttl=63 time=0.339 ms
+1008 bytes from 172.16.0.0: seq=8 ttl=63 time=0.702 ms
+1008 bytes from 172.16.0.0: seq=9 ttl=63 time=0.225 ms
+
+--- 172.16.0.0 ping statistics ---
+10 packets transmitted, 10 packets received, 0% packet loss
+round-trip min/avg/max = 0.225/0.641/1.340 ms
+/ # ping 172.16.0.0 -s 1000 -c 10
+PING 172.16.0.0 (172.16.0.0): 1000 data bytes
+1008 bytes from 172.16.0.0: seq=0 ttl=63 time=1.315 ms
+1008 bytes from 172.16.0.0: seq=1 ttl=63 time=0.820 ms
+1008 bytes from 172.16.0.0: seq=2 ttl=63 time=0.246 ms
+1008 bytes from 172.16.0.0: seq=3 ttl=63 time=0.292 ms
+1008 bytes from 172.16.0.0: seq=4 ttl=63 time=0.820 ms
+1008 bytes from 172.16.0.0: seq=5 ttl=63 time=0.243 ms
+1008 bytes from 172.16.0.0: seq=6 ttl=63 time=0.464 ms
+1008 bytes from 172.16.0.0: seq=7 ttl=63 time=1.328 ms
+1008 bytes from 172.16.0.0: seq=8 ttl=63 time=0.636 ms
+1008 bytes from 172.16.0.0: seq=9 ttl=63 time=0.586 ms
+
+--- 172.16.0.0 ping statistics ---
+10 packets transmitted, 10 packets received, 0% packet loss
+round-trip min/avg/max = 0.243/0.675/1.328 ms
+/ # ping 172.16.0.0 -s 1000 -c 10
+PING 172.16.0.0 (172.16.0.0): 1000 data bytes
+1008 bytes from 172.16.0.0: seq=0 ttl=63 time=1.106 ms
+1008 bytes from 172.16.0.0: seq=1 ttl=63 time=1.271 ms
+1008 bytes from 172.16.0.0: seq=2 ttl=63 time=1.395 ms
+1008 bytes from 172.16.0.0: seq=3 ttl=63 time=1.331 ms
+1008 bytes from 172.16.0.0: seq=4 ttl=63 time=1.345 ms
+1008 bytes from 172.16.0.0: seq=5 ttl=63 time=0.497 ms
+1008 bytes from 172.16.0.0: seq=6 ttl=63 time=1.022 ms
+1008 bytes from 172.16.0.0: seq=7 ttl=63 time=1.026 ms
+1008 bytes from 172.16.0.0: seq=8 ttl=63 time=0.858 ms
+1008 bytes from 172.16.0.0: seq=9 ttl=63 time=1.107 ms
+
+--- 172.16.0.0 ping statistics ---
+10 packets transmitted, 10 packets received, 0% packet loss
+round-trip min/avg/max = 0.497/1.095/1.395 ms
+/ # ping 172.16.0.0 -s 1000 -c 10
+PING 172.16.0.0 (172.16.0.0): 1000 data bytes
+1008 bytes from 172.16.0.0: seq=0 ttl=63 time=0.455 ms
+1008 bytes from 172.16.0.0: seq=1 ttl=63 time=0.895 ms
+1008 bytes from 172.16.0.0: seq=2 ttl=63 time=1.315 ms
+1008 bytes from 172.16.0.0: seq=3 ttl=63 time=0.253 ms
+1008 bytes from 172.16.0.0: seq=4 ttl=63 time=0.266 ms
+1008 bytes from 172.16.0.0: seq=5 ttl=63 time=1.226 ms
+1008 bytes from 172.16.0.0: seq=6 ttl=63 time=0.742 ms
+1008 bytes from 172.16.0.0: seq=7 ttl=63 time=0.409 ms
+1008 bytes from 172.16.0.0: seq=8 ttl=63 time=0.298 ms
+1008 bytes from 172.16.0.0: seq=9 ttl=63 time=9.912 ms
+
+--- 172.16.0.0 ping statistics ---
+10 packets transmitted, 10 packets received, 0% packet loss
+round-trip min/avg/max = 0.253/1.577/9.912 ms
+#############################################################################
+        FRAME SIZE 2000
+#############################################################################
+/ # ping 172.16.0.0 -s 2000 -c 10
+PING 172.16.0.0 (172.16.0.0): 2000 data bytes
+2008 bytes from 172.16.0.0: seq=0 ttl=63 time=0.212 ms
+2008 bytes from 172.16.0.0: seq=1 ttl=63 time=1.409 ms
+2008 bytes from 172.16.0.0: seq=2 ttl=63 time=1.509 ms
+2008 bytes from 172.16.0.0: seq=3 ttl=63 time=1.415 ms
+2008 bytes from 172.16.0.0: seq=4 ttl=63 time=1.344 ms
+2008 bytes from 172.16.0.0: seq=5 ttl=63 time=1.032 ms
+2008 bytes from 172.16.0.0: seq=6 ttl=63 time=1.173 ms
+2008 bytes from 172.16.0.0: seq=7 ttl=63 time=1.291 ms
+2008 bytes from 172.16.0.0: seq=8 ttl=63 time=1.141 ms
+2008 bytes from 172.16.0.0: seq=9 ttl=63 time=1.512 ms
+
+--- 172.16.0.0 ping statistics ---
+10 packets transmitted, 10 packets received, 0% packet loss
+round-trip min/avg/max = 0.212/1.203/1.512 ms
+/ # ping 172.16.0.0 -s 2000 -c 10
+PING 172.16.0.0 (172.16.0.0): 2000 data bytes
+2008 bytes from 172.16.0.0: seq=0 ttl=63 time=0.903 ms
+2008 bytes from 172.16.0.0: seq=1 ttl=63 time=1.211 ms
+2008 bytes from 172.16.0.0: seq=2 ttl=63 time=0.898 ms
+2008 bytes from 172.16.0.0: seq=3 ttl=63 time=0.257 ms
+2008 bytes from 172.16.0.0: seq=4 ttl=63 time=1.244 ms
+2008 bytes from 172.16.0.0: seq=5 ttl=63 time=1.288 ms
+2008 bytes from 172.16.0.0: seq=6 ttl=63 time=1.007 ms
+2008 bytes from 172.16.0.0: seq=7 ttl=63 time=1.329 ms
+2008 bytes from 172.16.0.0: seq=8 ttl=63 time=0.531 ms
+2008 bytes from 172.16.0.0: seq=9 ttl=63 time=1.072 ms
+
+--- 172.16.0.0 ping statistics ---
+10 packets transmitted, 10 packets received, 0% packet loss
+round-trip min/avg/max = 0.257/0.974/1.329 ms
+/ # ping 172.16.0.0 -s 2000 -c 10
+PING 172.16.0.0 (172.16.0.0): 2000 data bytes
+2008 bytes from 172.16.0.0: seq=0 ttl=63 time=0.453 ms
+2008 bytes from 172.16.0.0: seq=1 ttl=63 time=1.214 ms
+2008 bytes from 172.16.0.0: seq=2 ttl=63 time=0.361 ms
+2008 bytes from 172.16.0.0: seq=3 ttl=63 time=0.953 ms
+2008 bytes from 172.16.0.0: seq=4 ttl=63 time=0.754 ms
+2008 bytes from 172.16.0.0: seq=5 ttl=63 time=1.239 ms
+2008 bytes from 172.16.0.0: seq=6 ttl=63 time=0.983 ms
+2008 bytes from 172.16.0.0: seq=7 ttl=63 time=1.190 ms
+2008 bytes from 172.16.0.0: seq=8 ttl=63 time=1.190 ms
+2008 bytes from 172.16.0.0: seq=9 ttl=63 time=10.477 ms
+
+--- 172.16.0.0 ping statistics ---
+10 packets transmitted, 10 packets received, 0% packet loss
+round-trip min/avg/max = 0.361/1.881/10.477 ms
+/ # ping 172.16.0.0 -s 2000 -c 10
+PING 172.16.0.0 (172.16.0.0): 2000 data bytes
+2008 bytes from 172.16.0.0: seq=0 ttl=63 time=0.960 ms
+2008 bytes from 172.16.0.0: seq=1 ttl=63 time=1.490 ms
+2008 bytes from 172.16.0.0: seq=2 ttl=63 time=1.065 ms
+2008 bytes from 172.16.0.0: seq=3 ttl=63 time=1.550 ms
+2008 bytes from 172.16.0.0: seq=4 ttl=63 time=1.479 ms
+2008 bytes from 172.16.0.0: seq=5 ttl=63 time=1.141 ms
+2008 bytes from 172.16.0.0: seq=6 ttl=63 time=1.303 ms
+2008 bytes from 172.16.0.0: seq=7 ttl=63 time=2.933 ms
+2008 bytes from 172.16.0.0: seq=8 ttl=63 time=0.688 ms
+2008 bytes from 172.16.0.0: seq=9 ttl=63 time=1.001 ms
+
+--- 172.16.0.0 ping statistics ---
+10 packets transmitted, 10 packets received, 0% packet loss
+round-trip min/avg/max = 0.688/1.361/2.933 ms
+/ # ping 172.16.0.0 -s 2000 -c 10
+PING 172.16.0.0 (172.16.0.0): 2000 data bytes
+2008 bytes from 172.16.0.0: seq=0 ttl=63 time=1.419 ms
+2008 bytes from 172.16.0.0: seq=1 ttl=63 time=1.258 ms
+2008 bytes from 172.16.0.0: seq=2 ttl=63 time=0.313 ms
+2008 bytes from 172.16.0.0: seq=3 ttl=63 time=1.184 ms
+2008 bytes from 172.16.0.0: seq=4 ttl=63 time=1.106 ms
+2008 bytes from 172.16.0.0: seq=5 ttl=63 time=1.365 ms
+2008 bytes from 172.16.0.0: seq=6 ttl=63 time=1.291 ms
+2008 bytes from 172.16.0.0: seq=7 ttl=63 time=1.064 ms
+2008 bytes from 172.16.0.0: seq=8 ttl=63 time=0.938 ms
+2008 bytes from 172.16.0.0: seq=9 ttl=63 time=1.308 ms
+
+--- 172.16.0.0 ping statistics ---
+10 packets transmitted, 10 packets received, 0% packet loss
+round-trip min/avg/max = 0.313/1.124/1.419 ms

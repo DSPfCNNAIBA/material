@@ -1,0 +1,494 @@
+{
+    "comment": "1° Request"
+}
+
+{
+    
+    "timestamp": "2024-06-11T10:27:19.228719+0000",
+    "flow_id": 2096784327363492,
+    "in_iface": "webserver--1809",
+    "event_type": "alert",
+    "src_ip": "172.16.0.1",
+    "src_port": 55212,
+    "dest_ip": "172.16.0.0",
+    "dest_port": 80,
+    "proto": "TCP",
+    "pkt_src": "wire/pcap",
+    "tx_id": 0,
+    "alert": {
+        "action": "allowed",
+        "gid": 1,
+        "signature_id": 1000001,
+        "rev": 1,
+        "signature": "Detected curl/8.5.0 user-agent",
+        "category": "",
+        "severity": 3
+    },
+    "http": {
+        "hostname": "172.16.0.0",
+        "url": "/",
+        "http_user_agent": "curl/8.5.0",
+        "http_content_type": "application/octet-stream",
+        "http_method": "GET",
+        "protocol": "HTTP/1.1",
+        "status": 403,
+        "length": 37,
+        "http_response_body_printable": "Forbidden - Malicious Header Detected",
+        "http_response_body": "Rm9yYmlkZGVuIC0gTWFsaWNpb3VzIEhlYWRlciBEZXRlY3RlZA=="
+    },
+    "app_proto": "http",
+    "direction": "to_server",
+    "flow": {
+        "pkts_toserver": 4,
+        "pkts_toclient": 3,
+        "bytes_toserver": 376,
+        "bytes_toclient": 412,
+        "start": "2024-06-11T10:27:19.226051+0000",
+        "src_ip": "172.16.0.1",
+        "dest_ip": "172.16.0.0",
+        "src_port": 55212,
+        "dest_port": 80
+    },
+    "payload": "R0VUIC8gSFRUUC8xLjENCkhvc3Q6IDE3Mi4xNi4wLjANClVzZXItQWdlbnQ6IGN1cmwvOC41LjANCkFjY2VwdDogKi8qDQpYLU1hbGljaW91cy1IZWFkZXI6IGJhZF92YWx1ZQ0KDQo=",
+    "payload_printable": "GET / HTTP/1.1\r\nHost: 172.16.0.0\r\nUser-Agent: curl/8.5.0\r\nAccept: */*\r\nX-Malicious-Header: bad_value\r\n\r\n",
+    "stream": 1,
+    "packet": "Av72Sn95Av5CWUUSCABFAAA0IBtAAEAGwoesEAABrBAAANesAFBQewKIfEtcP4AQAel4egAAAQEICpnLpYB82uSG",
+    "packet_info": {
+        "linktype": 1
+    }
+}
+{
+    "timestamp": "2024-06-11T10:27:19.228719+0000",
+    "flow_id": 2096784327363492,
+    "in_iface": "webserver--1809",
+    "event_type": "http",
+    "src_ip": "172.16.0.1",
+    "src_port": 55212,
+    "dest_ip": "172.16.0.0",
+    "dest_port": 80,
+    "proto": "TCP",
+    "pkt_src": "wire/pcap",
+    "tx_id": 0,
+    "http": {
+        "hostname": "172.16.0.0",
+        "url": "/",
+        "http_user_agent": "curl/8.5.0",
+        "http_content_type": "application/octet-stream",
+        "http_method": "GET",
+        "protocol": "HTTP/1.1",
+        "status": 403,
+        "length": 37,
+        "request_headers": [
+            {
+                "name": "Host",
+                "value": "172.16.0.0"
+            },
+            {
+                "name": "User-Agent",
+                "value": "curl/8.5.0"
+            },
+            {
+                "name": "Accept",
+                "value": "*/*"
+            },
+            {
+                "name": "X-Malicious-Header",
+                "value": "bad_value"
+            }
+        ],
+        "response_headers": [
+            {
+                "name": "Server",
+                "value": "nginx/1.27.0"
+            },
+            {
+                "name": "Date",
+                "value": "Tue, 11 Jun 2024 10:27:19 GMT"
+            },
+            {
+                "name": "Content-Type",
+                "value": "application/octet-stream"
+            },
+            {
+                "name": "Content-Length",
+                "value": "37"
+            },
+            {
+                "name": "Connection",
+                "value": "keep-alive"
+            }
+        ]
+    }
+}
+
+
+
+{
+    "comment": "2° Request",
+}
+
+{
+    "timestamp": "2024-06-11T10:27:20.385623+0000",
+    "flow_id": 239709169554813,
+    "in_iface": "webserver--1809",
+    "event_type": "alert",
+    "src_ip": "172.16.0.1",
+    "src_port": 55222,
+    "dest_ip": "172.16.0.0",
+    "dest_port": 80,
+    "proto": "TCP",
+    "pkt_src": "wire/pcap",
+    "tx_id": 0,
+    "alert": {
+        "action": "allowed",
+        "gid": 1,
+        "signature_id": 1000001,
+        "rev": 1,
+        "signature": "Detected curl/8.5.0 user-agent",
+        "category": "",
+        "severity": 3
+    },
+    "http": {
+        "hostname": "172.16.0.0",
+        "url": "/",
+        "http_user_agent": "curl/8.5.0",
+        "http_content_type": "application/octet-stream",
+        "http_method": "GET",
+        "protocol": "HTTP/1.1",
+        "status": 403,
+        "length": 37,
+        "http_response_body_printable": "Forbidden - Malicious Header Detected",
+        "http_response_body": "Rm9yYmlkZGVuIC0gTWFsaWNpb3VzIEhlYWRlciBEZXRlY3RlZA=="
+    },
+    "app_proto": "http",
+    "direction": "to_server",
+    "flow": {
+        "pkts_toserver": 4,
+        "pkts_toclient": 3,
+        "bytes_toserver": 376,
+        "bytes_toclient": 412,
+        "start": "2024-06-11T10:27:20.383491+0000",
+        "src_ip": "172.16.0.1",
+        "dest_ip": "172.16.0.0",
+        "src_port": 55222,
+        "dest_port": 80
+    },
+    "payload": "R0VUIC8gSFRUUC8xLjENCkhvc3Q6IDE3Mi4xNi4wLjANClVzZXItQWdlbnQ6IGN1cmwvOC41LjANCkFjY2VwdDogKi8qDQpYLU1hbGljaW91cy1IZWFkZXI6IGJhZF92YWx1ZQ0KDQo=",
+    "payload_printable": "GET / HTTP/1.1\r\nHost: 172.16.0.0\r\nUser-Agent: curl/8.5.0\r\nAccept: */*\r\nX-Malicious-Header: bad_value\r\n\r\n",
+    "stream": 1,
+    "packet": "Av72Sn95Av5CWUUSCABFAAA0RphAAEAGnAqsEAABrBAAANe2AFDsVLuD6N8RaYAQAen40gAAAQEICpnLqgV82ukL",
+    "packet_info": {
+        "linktype": 1
+    }
+}
+{
+    "timestamp": "2024-06-11T10:27:20.385623+0000",
+    "flow_id": 239709169554813,
+    "in_iface": "webserver--1809",
+    "event_type": "http",
+    "src_ip": "172.16.0.1",
+    "src_port": 55222,
+    "dest_ip": "172.16.0.0",
+    "dest_port": 80,
+    "proto": "TCP",
+    "pkt_src": "wire/pcap",
+    "tx_id": 0,
+    "http": {
+        "hostname": "172.16.0.0",
+        "url": "/",
+        "http_user_agent": "curl/8.5.0",
+        "http_content_type": "application/octet-stream",
+        "http_method": "GET",
+        "protocol": "HTTP/1.1",
+        "status": 403,
+        "length": 37,
+        "request_headers": [
+            {
+                "name": "Host",
+                "value": "172.16.0.0"
+            },
+            {
+                "name": "User-Agent",
+                "value": "curl/8.5.0"
+            },
+            {
+                "name": "Accept",
+                "value": "*/*"
+            },
+            {
+                "name": "X-Malicious-Header",
+                "value": "bad_value"
+            }
+        ],
+        "response_headers": [
+            {
+                "name": "Server",
+                "value": "nginx/1.27.0"
+            },
+            {
+                "name": "Date",
+                "value": "Tue, 11 Jun 2024 10:27:20 GMT"
+            },
+            {
+                "name": "Content-Type",
+                "value": "application/octet-stream"
+            },
+            {
+                "name": "Content-Length",
+                "value": "37"
+            },
+            {
+                "name": "Connection",
+                "value": "keep-alive"
+            }
+        ]
+    }
+}
+
+
+
+{
+    "comment": "3° Request",
+}
+
+{
+    "timestamp": "2024-06-11T10:27:21.260319+0000",
+    "flow_id": 545885919310526,
+    "in_iface": "webserver--1809",
+    "event_type": "alert",
+    "src_ip": "172.16.0.1",
+    "src_port": 41030,
+    "dest_ip": "172.16.0.0",
+    "dest_port": 80,
+    "proto": "TCP",
+    "pkt_src": "wire/pcap",
+    "tx_id": 0,
+    "alert": {
+        "action": "allowed",
+        "gid": 1,
+        "signature_id": 1000001,
+        "rev": 1,
+        "signature": "Detected curl/8.5.0 user-agent",
+        "category": "",
+        "severity": 3
+    },
+    "http": {
+        "hostname": "172.16.0.0",
+        "url": "/",
+        "http_user_agent": "curl/8.5.0",
+        "http_content_type": "application/octet-stream",
+        "http_method": "GET",
+        "protocol": "HTTP/1.1",
+        "status": 403,
+        "length": 37,
+        "http_response_body_printable": "Forbidden - Malicious Header Detected",
+        "http_response_body": "Rm9yYmlkZGVuIC0gTWFsaWNpb3VzIEhlYWRlciBEZXRlY3RlZA=="
+    },
+    "app_proto": "http",
+    "direction": "to_server",
+    "flow": {
+        "pkts_toserver": 4,
+        "pkts_toclient": 3,
+        "bytes_toserver": 376,
+        "bytes_toclient": 412,
+        "start": "2024-06-11T10:27:21.258170+0000",
+        "src_ip": "172.16.0.1",
+        "dest_ip": "172.16.0.0",
+        "src_port": 41030,
+        "dest_port": 80
+    },
+    "payload": "R0VUIC8gSFRUUC8xLjENCkhvc3Q6IDE3Mi4xNi4wLjANClVzZXItQWdlbnQ6IGN1cmwvOC41LjANCkFjY2VwdDogKi8qDQpYLU1hbGljaW91cy1IZWFkZXI6IGJhZF92YWx1ZQ0KDQo=",
+    "payload_printable": "GET / HTTP/1.1\r\nHost: 172.16.0.0\r\nUser-Agent: curl/8.5.0\r\nAccept: */*\r\nX-Malicious-Header: bad_value\r\n\r\n",
+    "stream": 1,
+    "packet": "Av72Sn95Av5CWUUSCABFAAA01l9AAEAGDEOsEAABrBAAAKBGAFAPKyLiRl7kd4AQAelurAAAAQEICpnLrW982ux2",
+    "packet_info": {
+        "linktype": 1
+    }
+}
+{
+    "timestamp": "2024-06-11T10:27:21.260319+0000",
+    "flow_id": 545885919310526,
+    "in_iface": "webserver--1809",
+    "event_type": "http",
+    "src_ip": "172.16.0.1",
+    "src_port": 41030,
+    "dest_ip": "172.16.0.0",
+    "dest_port": 80,
+    "proto": "TCP",
+    "pkt_src": "wire/pcap",
+    "tx_id": 0,
+    "http": {
+        "hostname": "172.16.0.0",
+        "url": "/",
+        "http_user_agent": "curl/8.5.0",
+        "http_content_type": "application/octet-stream",
+        "http_method": "GET",
+        "protocol": "HTTP/1.1",
+        "status": 403,
+        "length": 37,
+        "request_headers": [
+            {
+                "name": "Host",
+                "value": "172.16.0.0"
+            },
+            {
+                "name": "User-Agent",
+                "value": "curl/8.5.0"
+            },
+            {
+                "name": "Accept",
+                "value": "*/*"
+            },
+            {
+                "name": "X-Malicious-Header",
+                "value": "bad_value"
+            }
+        ],
+        "response_headers": [
+            {
+                "name": "Server",
+                "value": "nginx/1.27.0"
+            },
+            {
+                "name": "Date",
+                "value": "Tue, 11 Jun 2024 10:27:21 GMT"
+            },
+            {
+                "name": "Content-Type",
+                "value": "application/octet-stream"
+            },
+            {
+                "name": "Content-Length",
+                "value": "37"
+            },
+            {
+                "name": "Connection",
+                "value": "keep-alive"
+            }
+        ]
+    }
+}
+
+
+
+{
+    "comment": "Suricata logs after realignment workflow.",
+}
+
+{
+    "timestamp": "2024-06-11T10:55:15.079755+0000",
+    "flow_id": 899984833641278,
+    "in_iface": "webserver--0f49",
+    "event_type": "alert",
+    "src_ip": "172.16.0.1",
+    "src_port": 33792,
+    "dest_ip": "172.16.0.0",
+    "dest_port": 80,
+    "proto": "TCP",
+    "pkt_src": "wire/pcap",
+    "tx_id": 0,
+    "alert": {
+        "action": "allowed",
+        "gid": 1,
+        "signature_id": 1000001,
+        "rev": 1,
+        "signature": "Detected curl/8.5.0 user-agent",
+        "category": "",
+        "severity": 3
+    },
+    "http": {
+        "hostname": "172.16.0.0",
+        "url": "/",
+        "http_user_agent": "curl/8.5.0",
+        "http_content_type": "text/html",
+        "http_method": "GET",
+        "protocol": "HTTP/1.1",
+        "status": 400,
+        "length": 3519,
+        "http_response_body_printable": "<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\"><html><head><meta type=\"copyright\" content=\"Copyright (C) 1996-2021 The Squid Software Foundation and contributors\"><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><title>ERROR: The requested URL could not be retrieved</title><style type=\"text/css\"><!-- /* Copyright (C) 1996-2023 The Squid Software Foundation and contributors * Squid software is distributed under GPLv2+ license and includes contributions from numerous individuals and organizations. Please see the COPYING and CONTRIBUTORS files for details. */ /* Stylesheet for Squid Error pages Adapted from design by Free CSS Templates http://www.freecsstemplates.org Released for free under a Creative Commons Attribution 2.5 License */ /* Page basics */ * { font-family: verdana, sans-serif; } html body { margin: 0; padding: 0; background: #efefef; font-size: 12px; color: #1e1e1e; } /* Page displayed title area */ #titles { margin-left: 15px; padding: 10px; padding-left: 100px; background: url('/squid-internal-static/icons/SN.png') no-repeat left; } /* initial title */ #titles h1 { color: #000000; } #titles h2 { color: #000000; } /* special event: FTP success page titles */ #titles ftpsuccess { background-color:#00ff00; width:100%; } /* Page displayed body content area */ #content { padding: 10px; background: #ffffff; } /* General text */ p { } /* error brief description */ #error p { } /* some data which may have caused the problem */ #data { } /* the error message received from the system or other software */ #sysmsg { } pre { } /* special event: FTP directory listing */ #dirmsg { font-family: courier, monospace; color: black; font-size: 10pt; } #dirlisting { margin-left: 2%; margin-right: 2%; } #dirlisting tr.entry td.icon,td.filename,td.size,td.date { border-bottom: groove; } #dirlisting td.size { width: 50px; text-align: right; padding-right: 5px; } /* horizontal lines */ hr { margin: 0; } /* page displayed footer area */ #footer { font-size: 9px; padding-left: 10px; } body :lang(fa) { direction: rtl; font-size: 100%; font-family: Tahoma, Roya, sans-serif; float: right; } :lang(he) { direction: rtl; } --></style></head><body id=ERR_ACCESS_DENIED><div id=\"titles\"><h1>ERROR</h1><h2>The requested URL could not be retrieved</h2></div><hr></body></html>",
+        "http_response_body": "PCFET0NUWVBFIGh0bWwgUFVCTElDICItLy9XM0MvL0RURCBIVE1MIDQuMDEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvVFIvaHRtbDQvc3RyaWN0LmR0ZCI+CjxodG1sPjxoZWFkPgo8bWV0YSB0eXBlPSJjb3B5cmlnaHQiIGNvbnRlbnQ9IkNvcHlyaWdodCAoQykgMTk5Ni0yMDIxIFRoZSBTcXVpZCBTb2Z0d2FyZSBGb3VuZGF0aW9uIGFuZCBjb250cmlidXRvcnMiPgo8bWV0YSBodHRwLWVxdWl2PSJDb250ZW50LVR5cGUiIGNvbnRlbnQ9InRleHQvaHRtbDsgY2hhcnNldD11dGYtOCI+Cjx0aXRsZT5FUlJPUjogVGhlIHJlcXVlc3RlZCBVUkwgY291bGQgbm90IGJlIHJldHJpZXZlZDwvdGl0bGU+CjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCEtLQogLyoKICogQ29weXJpZ2h0IChDKSAxOTk2LTIwMjMgVGhlIFNxdWlkIFNvZnR3YXJlIEZvdW5kYXRpb24gYW5kIGNvbnRyaWJ1dG9ycwogKgogKiBTcXVpZCBzb2Z0d2FyZSBpcyBkaXN0cmlidXRlZCB1bmRlciBHUEx2MisgbGljZW5zZSBhbmQgaW5jbHVkZXMKICogY29udHJpYnV0aW9ucyBmcm9tIG51bWVyb3VzIGluZGl2aWR1YWxzIGFuZCBvcmdhbml6YXRpb25zLgogKiBQbGVhc2Ugc2VlIHRoZSBDT1BZSU5HIGFuZCBDT05UUklCVVRPUlMgZmlsZXMgZm9yIGRldGFpbHMuCiAqLwoKLyoKIFN0eWxlc2hlZXQgZm9yIFNxdWlkIEVycm9yIHBhZ2VzCiBBZGFwdGVkIGZyb20gZGVzaWduIGJ5IEZyZWUgQ1NTIFRlbXBsYXRlcwogaHR0cDovL3d3dy5mcmVlY3NzdGVtcGxhdGVzLm9yZwogUmVsZWFzZWQgZm9yIGZyZWUgdW5kZXIgYSBDcmVhdGl2ZSBDb21tb25zIEF0dHJpYnV0aW9uIDIuNSBMaWNlbnNlCiovCgovKiBQYWdlIGJhc2ljcyAqLwoqIHsKCWZvbnQtZmFtaWx5OiB2ZXJkYW5hLCBzYW5zLXNlcmlmOwp9CgpodG1sIGJvZHkgewoJbWFyZ2luOiAwOwoJcGFkZGluZzogMDsKCWJhY2tncm91bmQ6ICNlZmVmZWY7Cglmb250LXNpemU6IDEycHg7Cgljb2xvcjogIzFlMWUxZTsKfQoKLyogUGFnZSBkaXNwbGF5ZWQgdGl0bGUgYXJlYSAqLwojdGl0bGVzIHsKCW1hcmdpbi1sZWZ0OiAxNXB4OwoJcGFkZGluZzogMTBweDsKCXBhZGRpbmctbGVmdDogMTAwcHg7CgliYWNrZ3JvdW5kOiB1cmwoJy9zcXVpZC1pbnRlcm5hbC1zdGF0aWMvaWNvbnMvU04ucG5nJykgbm8tcmVwZWF0IGxlZnQ7Cn0KCi8qIGluaXRpYWwgdGl0bGUgKi8KI3RpdGxlcyBoMSB7Cgljb2xvcjogIzAwMDAwMDsKfQojdGl0bGVzIGgyIHsKCWNvbG9yOiAjMDAwMDAwOwp9CgovKiBzcGVjaWFsIGV2ZW50OiBGVFAgc3VjY2VzcyBwYWdlIHRpdGxlcyAqLwojdGl0bGVzIGZ0cHN1Y2Nlc3MgewoJYmFja2dyb3VuZC1jb2xvcjojMDBmZjAwOwoJd2lkdGg6MTAwJTsKfQoKLyogUGFnZSBkaXNwbGF5ZWQgYm9keSBjb250ZW50IGFyZWEgKi8KI2NvbnRlbnQgewoJcGFkZGluZzogMTBweDsKCWJhY2tncm91bmQ6ICNmZmZmZmY7Cn0KCi8qIEdlbmVyYWwgdGV4dCAqLwpwIHsKfQoKLyogZXJyb3IgYnJpZWYgZGVzY3JpcHRpb24gKi8KI2Vycm9yIHAgewp9CgovKiBzb21lIGRhdGEgd2hpY2ggbWF5IGhhdmUgY2F1c2VkIHRoZSBwcm9ibGVtICovCiNkYXRhIHsKfQoKLyogdGhlIGVycm9yIG1lc3NhZ2UgcmVjZWl2ZWQgZnJvbSB0aGUgc3lzdGVtIG9yIG90aGVyIHNvZnR3YXJlICovCiNzeXNtc2cgewp9CgpwcmUgewp9CgovKiBzcGVjaWFsIGV2ZW50OiBGVFAgZGlyZWN0b3J5IGxpc3RpbmcgKi8KI2Rpcm1zZyB7CiAgICBmb250LWZhbWlseTogY291cmllciwgbW9ub3NwYWNlOwogICAgY29sb3I6IGJsYWNrOwogICAgZm9udC1zaXplOiAxMHB0Owp9CiNkaXJsaXN0aW5nIHsKICAgIG1hcmdpbi1sZWZ0OiAyJTsKICAgIG1hcmdpbi1yaWdodDogMiU7Cn0KI2Rpcmxpc3RpbmcgdHIuZW50cnkgdGQuaWNvbix0ZC5maWxlbmFtZSx0ZC5zaXplLHRkLmRhdGUgewogICAgYm9yZGVyLWJvdHRvbTogZ3Jvb3ZlOwp9CiNkaXJsaXN0aW5nIHRkLnNpemUgewogICAgd2lkdGg6IDUwcHg7CiAgICB0ZXh0LWFsaWduOiByaWdodDsKICAgIHBhZGRpbmctcmlnaHQ6IDVweDsKfQoKLyogaG9yaXpvbnRhbCBsaW5lcyAqLwpociB7CgltYXJnaW46IDA7Cn0KCi8qIHBhZ2UgZGlzcGxheWVkIGZvb3RlciBhcmVhICovCiNmb290ZXIgewoJZm9udC1zaXplOiA5cHg7CglwYWRkaW5nLWxlZnQ6IDEwcHg7Cn0KCgpib2R5CjpsYW5nKGZhKSB7IGRpcmVjdGlvbjogcnRsOyBmb250LXNpemU6IDEwMCU7IGZvbnQtZmFtaWx5OiBUYWhvbWEsIFJveWEsIHNhbnMtc2VyaWY7IGZsb2F0OiByaWdodDsgfQo6bGFuZyhoZSkgeyBkaXJlY3Rpb246IHJ0bDsgfQogLS0+PC9zdHlsZT4KPC9oZWFkPjxib2R5IGlkPUVSUl9BQ0NFU1NfREVOSUVEPgo8ZGl2IGlkPSJ0aXRsZXMiPgo8aDE+RVJST1I8L2gxPgo8aDI+VGhlIHJlcXVlc3RlZCBVUkwgY291bGQgbm90IGJlIHJldHJpZXZlZDwvaDI+CjwvZGl2Pgo8aHI+Cgo8ZGl2IGlkPSJjb250ZW50Ij4KPHA+VGhlIGZvbGxvd2luZyBlcnJvciB3YXMgZW5jb3VudGVyZWQgd2hpbGUgdHJ5aW5nIHRvIHJldHJpZXZlIHRoZSBVUkw6IDxhIGhyZWY9Imh0dHA6Ly93d3cuZ29vZ2xlLmNvbS8iPmh0dHA6Ly93d3cuZ29vZ2xlLmNvbS88L2E+PC9wPgoKPGJsb2NrcXVvdGUgaWQ9ImVycm9yIj4KPHA+PGI+QWNjZXNzIERlbmllZC48L2I+PC9wPgo8L2Jsb2NrcXVvdGU+Cgo8cD5BY2Nlc3MgY29udHJvbCBjb25maWd1cmF0aW9uIHByZXZlbnRzIHlvdXIgcmVxdWVzdCBmcm9tIGJlaW5nIGFsbG93ZWQgYXQgdGhpcyB0aW1lLiBQbGVhc2UgY29udGFjdCB5b3VyIHNlcnZpY2UgcHJvdmlkZXIgaWYgeW91IGZlZWwgdGhpcyBpcyBpbmNvcnJlY3QuPC9wPgoKPHA+WW91ciBjYWNoZSBhZG1pbmlzdHJhdG9yIGlzIDxhIGhyZWY9Im1haWx0bzp3ZWJtYXN0ZXI/c3ViamVjdD1DYWNoZUVycm9ySW5mbyUyMC0lMjBFUlJfQUNDRVNTX0RFTklFRCZhbXA7Ym9keT1DYWNoZUhvc3QlM0ElMjBzcXVpZGVuZC03ODg1NDY5YjZmLXFjc2xzJTBEJTBBRXJyUGFnZSUzQSUyMEVSUl9BQ0NFU1NfREVOSUVEJTBEJTBBRXJyJTNBJTIwJTVCbm9uZSU1RCUwRCUwQVRpbWVTdGFtcCUzQSUyME1vbiwlMjAxNyUyMEp1biUyMDIwMjQlMjAxMiUzQTU5JTNBMzglMjBHTVQlMEQlMEElMEQlMEFDbGllbnRJUCUzQSUyMDE3Mi4xNi4xLjElMEQlMEElMEQlMEFIVFRQJTIwUmVxdWVzdCUzQSUwRCUwQUdFVCUyMCUyRiUyMEhUVFAlMkYxLjElMEFIb3N0JTNBJTIwd3d3Lmdvb2dsZS5jb20lMEQlMEFVc2VyLUFnZW50JTNBJTIwY3VybCUyRjguNS4wJTBEJTBBQWNjZXB0JTNBJTIwKiUyRiolMEQlMEFQcm94eS1Db25uZWN0aW9uJTNBJTIwS2VlcC1BbGl2ZSUwRCUwQSUwRCUwQSUwRCUwQSI+d2VibWFzdGVyPC9hPi48L3A+Cjxicj4KPC9kaXY+Cgo8aHI+CjxkaXYgaWQ9ImZvb3RlciI+CjxwPkdlbmVyYXRlZCBNb24sIDE3IEp1biAyMDI0IDEyOjU5OjM4IEdNVCBieSBzcXVpZGVuZC03ODg1NDY5YjZmLXFjc2xzIChzcXVpZC82LjEpPC9wPgo8IS0tIEVSUl9BQ0NFU1NfREVOSUVEIC0tPgo8L2Rpdj4KPC9ib2R5PjwvaHRtbD4K"
+    }
+},
+{
+    "timestamp": "2024-06-11T10:55:15.079755+0000",
+    "flow_id": 899984833641278,
+    "in_iface": "webserver--0f49",
+    "event_type": "http",
+    "src_ip": "172.16.0.1",
+    "src_port": 33792,
+    "dest_ip": "172.16.0.0",
+    "dest_port": 80,
+    "proto": "TCP",
+    "pkt_src": "wire/pcap",
+    "tx_id": 0,
+    "http": {
+        "hostname": "172.16.0.0",
+        "url": "/",
+        "http_user_agent": "curl/8.5.0",
+        "http_content_type": "text/html",
+        "http_method": "GET",
+        "protocol": "HTTP/1.1",
+        "status": 400,
+        "length": 3519,
+        "request_headers": [
+            {
+                "name": "Host",
+                "value": "172.16.0.0"
+            },
+            {
+                "name": "User-Agent",
+                "value": "curl/8.5.0"
+            },
+            {
+                "name": "Accept",
+                "value": "*/*"
+            }
+        ],
+        "response_headers": [
+            {
+                "name": "Server",
+                "value": "squid/6.1"
+            },
+            {
+                "name": "Mime-Version",
+                "value": "1.0"
+            },
+            {
+                "name": "Date",
+                "value": "Tue, 11 Jun 2024 10:55:15 GMT"
+            },
+            {
+                "name": "Content-Type",
+                "value": "text/html;charset=utf-8"
+            },
+            {
+                "name": "Content-Length",
+                "value": "3519"
+            },
+            {
+                "name": "X-Squid-Error",
+                "value": "ERR_ACCESS_DENIED"
+            },
+            {
+                "name": "Vary",
+                "value": "Accept-Language"
+            },
+            {
+                "name": "Content-Language",
+                "value": "en"
+            },
+            {
+                "name": "Cache-Status",
+                "value": "squid-856449554f-5twvf"
+            },
+            {
+                "name": "Via",
+                "value": "1.1 squid-856449554f-5twvf (squid/6.1)"
+            },
+            {
+                "name": "Connection",
+                "value": "close"
+            }
+        ]
+    }
+}

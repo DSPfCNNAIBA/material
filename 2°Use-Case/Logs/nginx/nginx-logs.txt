@@ -1,0 +1,7 @@
+Here are reported 2 logs of 2 different requests. The first log refers to the "curl -H "X-Malicious-Header: bad_value"  http://172.16.0.0:80" request, while the second one to "curl -H "X-Malicious-Header: bad_value"  http://172.16.0.0:80".
+In the both cases, an error code 403 is returned with a "Forbidden" message, since a malicious header is detected. 
+
+
+
+172.16.2.1 - - [27/May/2024:08:32:19 +0000] "GET / HTTP/1.1" 403 37 "-" "curl/8.5.0" "-" "Detected Malicious Header: bad_value"
+172.16.2.1 - - [27/May/2024:08:32:24 +0000] "GET / HTTP/1.1" 403 37 "-" "curl/8.5.0" "-" "Detected Malicious Header: bad_value"

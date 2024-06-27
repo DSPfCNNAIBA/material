@@ -1,0 +1,31 @@
+In this case there is a chain with 3 elements: NSC, SF, NSE.
+The traffic generated from NSC go through ``iptables-sf`` and reach the NSE.
+On the NSE a container with ``tcpdump`` is placed.
+
+The interface present in the command is the kernel interface placed in the last endpoint, which has as IP 172.16.2.0
+The client which requests the service has as IP 172.16.0.1 .
+Monitoring the specific interfaces it can be seen how the traffic is coming from the client and it is redirected to the endpoint.
+
+/ # tcpdump -i enforcment-5696 -n -l
+tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+listening on enforcment-5696, link-type EN10MB (Ethernet), capture size 262144 bytes
+07:33:06.051695 IP 172.16.2.1 > 172.16.2.0: ICMP echo request, id 782, seq 1, length 24
+07:33:06.051734 IP 172.16.2.0 > 172.16.2.1: ICMP echo reply, id 782, seq 1, length 24
+07:33:06.119882 IP 172.16.0.1 > 172.16.2.0: ICMP echo request, id 781, seq 3, length 24
+07:33:06.301770 IP 172.16.2.1 > 172.16.2.0: ICMP echo request, id 782, seq 2, length 24
+07:33:06.301816 IP 172.16.2.0 > 172.16.2.1: ICMP echo reply, id 782, seq 2, length 24
+07:33:06.590889 IP 172.16.2.1 > 172.16.2.0: ICMP echo request, id 782, seq 3, length 24
+07:33:06.590909 IP 172.16.2.0 > 172.16.2.1: ICMP echo reply, id 782, seq 3, length 24
+07:33:06.691883 IP 172.16.2.1 > 172.16.2.0: ICMP echo request, id 783, seq 0, length 24
+07:33:06.691897 IP 172.16.2.0 > 172.16.2.1: ICMP echo reply, id 783, seq 0, length 24
+07:33:06.942959 IP 172.16.2.1 > 172.16.2.0: ICMP echo request, id 783, seq 1, length 24
+07:33:06.943006 IP 172.16.2.0 > 172.16.2.1: ICMP echo reply, id 783, seq 1, length 24
+07:33:07.192875 IP 172.16.2.1 > 172.16.2.0: ICMP echo request, id 783, seq 2, length 24
+07:33:07.192900 IP 172.16.2.0 > 172.16.2.1: ICMP echo reply, id 783, seq 2, length 24
+07:33:07.366132 IP 172.16.0.1 > 172.16.2.0: ICMP echo request, id 784, seq 0, length 24
+07:33:07.442751 IP 172.16.2.1 > 172.16.2.0: ICMP echo request, id 783, seq 3, length 24
+07:33:07.442792 IP 172.16.2.0 > 172.16.2.1: ICMP echo reply, id 783, seq 3, length 24
+07:33:07.543973 IP 172.16.2.1 > 172.16.2.0: ICMP echo request, id 785, seq 0, length 24
+07:33:07.544000 IP 172.16.2.0 > 172.16.2.1: ICMP echo reply, id 785, seq 0, length 24
+07:33:07.616351 IP 172.16.0.1 > 172.16.2.0: ICMP echo request, id 784, seq 1, length 24
+

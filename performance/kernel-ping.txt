@@ -1,0 +1,55 @@
+########################################################
+kernel2kernel
+########################################################
+
+/ # ping -c 10 172.16.1.100
+PING 172.16.1.100 (172.16.1.100): 56 data bytes
+64 bytes from 172.16.1.100: seq=0 ttl=63 time=0.191 ms
+64 bytes from 172.16.1.100: seq=1 ttl=63 time=0.688 ms
+64 bytes from 172.16.1.100: seq=2 ttl=63 time=0.469 ms
+64 bytes from 172.16.1.100: seq=3 ttl=63 time=0.572 ms
+64 bytes from 172.16.1.100: seq=4 ttl=63 time=0.551 ms
+64 bytes from 172.16.1.100: seq=5 ttl=63 time=0.243 ms
+64 bytes from 172.16.1.100: seq=6 ttl=63 time=0.478 ms
+64 bytes from 172.16.1.100: seq=7 ttl=63 time=0.645 ms
+64 bytes from 172.16.1.100: seq=8 ttl=63 time=0.583 ms
+64 bytes from 172.16.1.100: seq=9 ttl=63 time=0.750 ms
+
+--- 172.16.1.100 ping statistics ---
+10 packets transmitted, 10 packets received, 0% packet loss
+round-trip min/avg/max = 0.191/0.517/0.750 ms
+
+/ # ping -s 500 -c 10 172.16.1.100
+PING 172.16.1.100 (172.16.1.100): 500 data bytes
+508 bytes from 172.16.1.100: seq=0 ttl=63 time=0.574 ms
+508 bytes from 172.16.1.100: seq=1 ttl=63 time=0.517 ms
+508 bytes from 172.16.1.100: seq=2 ttl=63 time=0.127 ms
+508 bytes from 172.16.1.100: seq=3 ttl=63 time=0.634 ms
+508 bytes from 172.16.1.100: seq=4 ttl=63 time=0.760 ms
+508 bytes from 172.16.1.100: seq=5 ttl=63 time=0.737 ms
+508 bytes from 172.16.1.100: seq=6 ttl=63 time=0.618 ms
+508 bytes from 172.16.1.100: seq=7 ttl=63 time=0.172 ms
+508 bytes from 172.16.1.100: seq=8 ttl=63 time=0.621 ms
+508 bytes from 172.16.1.100: seq=9 ttl=63 time=0.247 ms
+
+--- 172.16.1.100 ping statistics ---
+10 packets transmitted, 10 packets received, 0% packet loss
+round-trip min/avg/max = 0.127/0.500/0.760 ms
+
+/ # ping 172.16.1.100 -s 1000 -c 10
+PING 172.16.1.100 (172.16.1.100): 1000 data bytes
+1008 bytes from 172.16.1.100: seq=0 ttl=63 time=0.647 ms
+1008 bytes from 172.16.1.100: seq=1 ttl=63 time=0.231 ms
+1008 bytes from 172.16.1.100: seq=2 ttl=63 time=0.640 ms
+1008 bytes from 172.16.1.100: seq=3 ttl=63 time=0.481 ms
+1008 bytes from 172.16.1.100: seq=4 ttl=63 time=0.681 ms
+1008 bytes from 172.16.1.100: seq=5 ttl=63 time=0.222 ms
+1008 bytes from 172.16.1.100: seq=6 ttl=63 time=0.655 ms
+1008 bytes from 172.16.1.100: seq=7 ttl=63 time=0.411 ms
+1008 bytes from 172.16.1.100: seq=8 ttl=63 time=0.246 ms
+1008 bytes from 172.16.1.100: seq=9 ttl=63 time=0.770 ms
+
+--- 172.16.1.100 ping statistics ---
+10 packets transmitted, 10 packets received, 0% packet loss
+round-trip min/avg/max = 0.222/0.498/0.770 ms
+

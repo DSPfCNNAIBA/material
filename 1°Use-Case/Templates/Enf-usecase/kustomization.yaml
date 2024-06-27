@@ -1,0 +1,26 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: enf-ns
+
+resources:
+- enf-ns.yaml
+- iptables-sf.yaml
+- ns.yaml
+- client.yaml
+- nse-kernel.yaml
+
+patchesStrategicMerge:
+- patch-nse.yaml
+
+configMapGenerator:
+- name: nginx-config
+  files:  
+  - nginx.conf
+
+#INTERFACE=$(ip -o -4 addr list | grep "172.16.0.0/32" | awk '{print $2}')
+#iptables -t nat -A PREROUTING -i $INTERFACE -j DNAT --to 172.16.2.0
+#iptables -A FORWARD -i $INTERFACE -o sf-int -j ACCEPT
+#iptables -A FORWARD -i sf-int -o $INTERFACE -j ACCEPT
+#iptables -t nat -A POSTROUTING -o sf-int -j SNAT --to 172.16.2.1
+

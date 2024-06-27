@@ -1,0 +1,21 @@
+Ping withouth any kind of framework such as NSM.
+In this case the interfaces used are the ones offered by the standard Flannel CNI.
+In this case the kernel data plane is used.
+
+
+/ # ping -c 10 10.244.0.29
+PING 10.244.0.29 (10.244.0.29): 56 data bytes
+64 bytes from 10.244.0.29: seq=0 ttl=63 time=0.335 ms
+64 bytes from 10.244.0.29: seq=1 ttl=63 time=0.154 ms
+64 bytes from 10.244.0.29: seq=2 ttl=63 time=0.168 ms
+64 bytes from 10.244.0.29: seq=3 ttl=63 time=0.049 ms
+64 bytes from 10.244.0.29: seq=4 ttl=63 time=0.209 ms
+64 bytes from 10.244.0.29: seq=5 ttl=63 time=0.090 ms
+64 bytes from 10.244.0.29: seq=6 ttl=63 time=0.061 ms
+64 bytes from 10.244.0.29: seq=7 ttl=63 time=0.158 ms
+64 bytes from 10.244.0.29: seq=8 ttl=63 time=0.244 ms
+64 bytes from 10.244.0.29: seq=9 ttl=63 time=0.162 ms
+
+--- 10.244.0.29 ping statistics ---
+10 packets transmitted, 10 packets received, 0% packet loss
+round-trip min/avg/max = 0.049/0.163/0.335 ms

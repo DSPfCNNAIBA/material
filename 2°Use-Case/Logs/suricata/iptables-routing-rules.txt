@@ -1,0 +1,5 @@
+INTERFACE=$(ip -o -4 addr list | grep "172.16.0.0/32" | awk '{print $2}')
+iptables -t nat -A PREROUTING -i $INTERFACE -j DNAT --to 172.16.1.0
+iptables -A FORWARD -i $INTERFACE -o suricataint -j ACCEPT
+iptables -A FORWARD -i suricataint -o $INTERFACE -j ACCEPT
+iptables -t nat -A POSTROUTING -o suricataint -j SNAT --to 172.16.1.1

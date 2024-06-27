@@ -1,0 +1,32 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: webserver-a
+
+resources:
+- webserverA-ns.yaml
+- iptables-sf.yaml
+- ns.yaml
+- client.yaml
+- nse-kernel.yaml
+- storage.yaml
+- squidVolume.yaml
+- squidPod.yaml
+
+patchesStrategicMerge:
+- patch-nse.yaml
+
+configMapGenerator:
+- name: nginx-config
+  files:  
+  - nginx.conf
+- name: squid-config
+  files:
+    - squid.conf
+
+#INTERFACE=$(ip -o -4 addr list | grep "172.16.0.0/32" | awk '{print $2}')
+#iptables -t nat -A PREROUTING -i $INTERFACE -j DNAT --to 172.16.2.0
+#iptables -A FORWARD -i $INTERFACE -o int2 -j ACCEPT
+#iptables -A FORWARD -i int2 -o $INTERFACE -j ACCEPT
+#iptables -t nat -A POSTROUTING -o int2 -j SNAT --to 172.16.2.1
+

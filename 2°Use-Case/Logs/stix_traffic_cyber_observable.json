@@ -1,0 +1,144 @@
+{
+    "type": "bundle",
+    "id": "bundle--9881d7f5-01ea-4c01-87dd-c7178742fc75",
+    "objects": [
+        {
+            "type": "observed-data",
+            "spec_version": "2.1",
+            "id": "observed-data--647ae6ff-710e-47a0-9d1f-9f8bce883c67",
+            "created": "2024-06-12T14:57:12.343612Z",
+            "modified": "2024-06-12T14:57:12.343612Z",
+            "first_observed": "2024-06-11T10:27:19.228719Z",
+            "last_observed": "2024-06-11T10:27:19.228719Z",
+            "number_observed": 1,
+            "object_refs": [
+                "ipv4-addr--f9784b79-ee1f-5b27-920e-874a96bb742e",
+                "ipv4-addr--73fa2a5a-8f2a-5a63-8ba5-84666f90b36b",
+                "network-traffic--796bf82b-6fb8-58f1-9987-2505311a664b"
+            ]
+        },
+        {
+            "type": "observed-data",
+            "spec_version": "2.1",
+            "id": "observed-data--7db96779-f5f0-47b6-a81e-eac0dc81f9cd",
+            "created": "2024-06-12T14:57:12.343739Z",
+            "modified": "2024-06-12T14:57:12.343739Z",
+            "first_observed": "2024-06-11T10:27:20.385623Z",
+            "last_observed": "2024-06-11T10:27:20.385623Z",
+            "number_observed": 1,
+            "object_refs": [
+                "ipv4-addr--f9784b79-ee1f-5b27-920e-874a96bb742e",
+                "ipv4-addr--73fa2a5a-8f2a-5a63-8ba5-84666f90b36b",
+                "network-traffic--2088b260-4ef7-50b0-83b3-0d5845ecb8fb"
+            ]
+        },
+        {
+            "type": "observed-data",
+            "spec_version": "2.1",
+            "id": "observed-data--ed638389-94db-4f08-8034-6573ce195c39",
+            "created": "2024-06-12T14:57:12.343827Z",
+            "modified": "2024-06-12T14:57:12.343827Z",
+            "first_observed": "2024-06-11T10:27:21.260319Z",
+            "last_observed": "2024-06-11T10:27:21.260319Z",
+            "number_observed": 1,
+            "object_refs": [
+                "ipv4-addr--f9784b79-ee1f-5b27-920e-874a96bb742e",
+                "ipv4-addr--73fa2a5a-8f2a-5a63-8ba5-84666f90b36b",
+                "network-traffic--e05dda5d-69c4-5b82-a620-38d608967710"
+            ]
+        },
+        {
+            "type": "ipv4-addr",
+            "spec_version": "2.1",
+            "id": "ipv4-addr--f9784b79-ee1f-5b27-920e-874a96bb742e",
+            "value": "172.16.0.1"
+        },
+        {
+            "type": "ipv4-addr",
+            "spec_version": "2.1",
+            "id": "ipv4-addr--73fa2a5a-8f2a-5a63-8ba5-84666f90b36b",
+            "value": "172.16.0.0"
+        },
+        {
+            "type": "network-traffic",
+            "spec_version": "2.1",
+            "id": "network-traffic--796bf82b-6fb8-58f1-9987-2505311a664b",
+            "is_active": false,
+            "src_ref": "ipv4-addr--f9784b79-ee1f-5b27-920e-874a96bb742e",
+            "dst_ref": "ipv4-addr--73fa2a5a-8f2a-5a63-8ba5-84666f90b36b",
+            "src_port": 34922,
+            "dst_port": 80,
+            "protocols": [
+                "tcp",
+                "http"
+            ],
+            "extensions": {
+                "http-request-ext": {
+                    "request_method": "GET",
+                    "request_value": "/page1",
+                    "request_version": "http/1.1",
+                    "request_header": {
+                        "Accept": "*/*",
+                        "Host": "172.16.0.0",
+                        "User-Agent": "curl/8.5.0",
+                        "X-Malicious-Header": "bad_value"
+                    }
+                }
+            }
+        },
+        {
+            "type": "network-traffic",
+            "spec_version": "2.1",
+            "id": "network-traffic--2088b260-4ef7-50b0-83b3-0d5845ecb8fb",
+            "is_active": false,
+            "src_ref": "ipv4-addr--f9784b79-ee1f-5b27-920e-874a96bb742e",
+            "dst_ref": "ipv4-addr--73fa2a5a-8f2a-5a63-8ba5-84666f90b36b",
+            "src_port": 34922,
+            "dst_port": 80,
+            "protocols": [
+                "tcp",
+                "http"
+            ],
+            "extensions": {
+                "http-request-ext": {
+                    "request_method": "GET",
+                    "request_value": "/page2",
+                    "request_version": "http/1.1",
+                    "request_header": {
+                        "Accept": "*/*",
+                        "CustomMaliciousRequest": "maliciousHeader",
+                        "Host": "172.16.0.0",
+                        "User-Agent": "curl/8.5.0"
+                    }
+                }
+            }
+        },
+        {
+            "type": "network-traffic",
+            "spec_version": "2.1",
+            "id": "network-traffic--e05dda5d-69c4-5b82-a620-38d608967710",
+            "is_active": false,
+            "src_ref": "ipv4-addr--f9784b79-ee1f-5b27-920e-874a96bb742e",
+            "dst_ref": "ipv4-addr--73fa2a5a-8f2a-5a63-8ba5-84666f90b36b",
+            "src_port": 34922,
+            "dst_port": 80,
+            "protocols": [
+                "tcp",
+                "http"
+            ],
+            "extensions": {
+                "http-request-ext": {
+                    "request_method": "GET",
+                    "request_value": "/page3",
+                    "request_version": "http/1.1",
+                    "request_header": {
+                        "Accept": "*/*",
+                        "CustomMaliciousRequest": "maliciousHeader",
+                        "Host": "172.16.0.0",
+                        "User-Agent": "curl/8.5.0"
+                    }
+                }
+            }
+        }
+    ]
+}

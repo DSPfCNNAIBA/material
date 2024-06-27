@@ -1,0 +1,19 @@
+This file presents a rule inserted within the local.rules file for suricata.
+This rule must be considered as a PoC that we can configure suricata and express different rules, in order to be compliant with the specifications
+#########################################################################
+
+alert http any any -> any any (msg:"Detected curl/8.5.0 user-agent"; flow:established,to_server; content:"User-Agent: curl/8.5.0"; http_header; classtype:policy-violation; sid:1000001; rev:1;)
+
+#########################################################################
+
+In particular is exploited by Suricata container to register an alert when an action of this type is detected.  
+
+The related logs are the following ones:
+
+#########################################################################
+
+05/28/2024-09:23:10.765160  [**] [1:1000001:1] Detected curl/8.5.0 user-agent [**] [Classification: (null)] [Priority: 3] {TCP} 172.16.0.1:55820 -> 172.16.0.0:8080
+
+05/28/2024-09:23:13.916179  [**] [1:1000001:1] Detected curl/8.5.0 user-agent [**] [Classification: (null)] [Priority: 3] {TCP} 172.16.0.1:37654 -> 172.16.0.0:80
+
+#########################################################################

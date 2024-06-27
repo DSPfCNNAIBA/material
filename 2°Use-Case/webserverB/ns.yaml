@@ -1,0 +1,21 @@
+---
+apiVersion: networkservicemesh.io/v1
+kind: NetworkService
+metadata:
+  name: webserver-b
+spec:
+  payload: ETHERNET
+  matches:
+    - source_selector:
+        app: squid
+      routes:
+        - destination_selector:
+            app: suricata
+    - source_selector:
+        app: suricata
+      routes:
+        - destination_selector:
+            app: gateway
+    - routes:
+        - destination_selector:
+            app: squid

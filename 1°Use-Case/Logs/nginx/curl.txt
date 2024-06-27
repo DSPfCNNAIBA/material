@@ -1,0 +1,16 @@
+Curl to the right port 8080.
+
+kubectl exec -it -n enf-ns nsc -- /bin/sh
+Defaulted container "alpine" out of: alpine, cmd-nsc, cmd-nsc-init (init)
+/ # curl http://172.16.0.0:8080
+OK/ #
+
+
+
+Curl to the wrong port 80.
+
+kubectl exec -it -n enf-ns nsc -- /bin/sh
+Defaulted container "alpine" out of: alpine, cmd-nsc, cmd-nsc-init (init)
+/ # curl http://172.16.0.0:80
+Forbidden/ #
+

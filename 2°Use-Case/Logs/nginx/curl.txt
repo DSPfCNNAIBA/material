@@ -1,0 +1,16 @@
+Curl to the right port 8080 with a malicious header. 
+
+kubectl exec -it -n enf-ns nsc -- /bin/sh
+Defaulted container "alpine" out of: alpine, cmd-nsc, cmd-nsc-init (init)
+/ # curl -H "X-Malicious-Header: bad_value" http://172.16.0.0:8080
+Forbidden - Malicious Header Detected/ #
+
+
+
+Curl to the forbidden port 80.
+
+kubectl exec -it -n enf-ns nsc -- /bin/sh
+Defaulted container "alpine" out of: alpine, cmd-nsc, cmd-nsc-init (init)
+/ # curl -H "X-Malicious-Header: bad_value"  http://172.16.0.0:80
+Forbidden - Malicious Header Detected/ #
+

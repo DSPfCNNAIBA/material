@@ -1,0 +1,103 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: iptables-sf
+  labels:
+    app: iptables-sf
+spec:
+  selector:
+    matchLabels:
+      app: iptables-sf
+  template:
+    metadata:
+      labels:
+        app: iptables-sf
+        "spiffe.io/spiffe-id": "true"
+    spec:
+      containers:
+      - name: nse
+        image: ghcr.io/networkservicemesh/cmd-nse-icmp-responder:v1.11.0
+        imagePullPolicy: IfNotPresent
+        securityContext:
+          privileged: true
+        env:
+        - name: SPIFFE_ENDPOINT_SOCKET
+          value: unix:///run/spire/sockets/agent.sock
+        - name: NSM_LABELS
+          value: app:iptables-sf
+        - name: NSM_SERVICE_NAMES
+          value: "webserver-a"
+        - name: NSM_LOG_LEVEL
+          value: TRACE
+        - name: NSM_CIDR_PREFIX
+          value: 172.16.0.0/31
+        - name: NSM_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: NSM_CONNECT_TO
+          value: unix:///var/lib/networkservicemesh/nsm.io.sock
+        - name: NSM_REGISTER_SERVICE
+          value: "false"
+        volumeMounts:
+        - name: spire-agent-socket
+          mountPath: /run/spire/sockets
+          readOnly: true
+        - name: nsm-socket
+          mountPath: /var/lib/networkservicemesh
+          readOnly: true
+        resources:
+          requests:
+            cpu: 100m
+            memory: 40Mi
+          limits:
+            memory: 80Mi
+            cpu: 200m
+      - name: cmd-nsc
+        image: ghcr.io/networkservicemesh/ci/cmd-nsc:d105640
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: SPIFFE_ENDPOINT_SOCKET
+          value: unix:///run/spire/sockets/agent.sock
+        - name: NSM_REGISTER_SERVICE
+          value: "false"
+        - name: NSM_NETWORK_SERVICES
+          value: kernel://webserver-a/sf-int?app=iptables-sf
+        - name: NSM_LOG_LEVEL
+          value: TRACE
+        - name: NSM_CONNECT_TO
+          value: unix:///var/lib/networkservicemesh/nsm.io.sock
+        volumeMounts:
+        - name: spire-agent-socket
+          mountPath: /run/spire/sockets
+          readOnly: true
+        - name: nsm-socket
+          mountPath: /var/lib/networkservicemesh
+          readOnly: true            
+        resources:
+          requests:
+            cpu: 100m
+            memory: 40Mi
+          limits:
+            memory: 80Mi
+            cpu: 200m
+            
+      - name: alpine
+        image: alpine:3.15.0
+        imagePullPolicy: IfNotPresent
+        # simple `sleep` command would work
+        # but we need `trap` to be able to delete pods quckly
+        command: ["/bin/sh", "-c", "trap : TERM INT; sleep infinity & wait"]
+      volumes:
+      - name: spire-agent-socket
+        hostPath:
+          path: /run/spire/sockets
+          type: Directory
+      - name: nsm-socket
+        hostPath:
+          path: /var/lib/networkservicemesh
+          type: DirectoryOrCreate
+
+
+
+        
