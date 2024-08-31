@@ -1,8 +1,7 @@
-Here it is possible to find the logs and relative templates, ``webserverA`` and ``webserverB``, used for the 2° use-case.
-In particular within the ``Logs`` folder we provide the logs of the 2 security functions used, Suricata and Squid.
-Then we also reported the logs of the nginx web server.
+In this folder, you will find the logs collected during the validation of the second use case, including the resource templates, specifically those for the services ``webserverA`` and ``webserverB``.
 
-The security event corresponsing to the logs shown for this use case is generated when the logs match the following pattern:
-`[network-traffic:extensions.'http-request-ext'.request_header.'X-Malicious-Header' = 'bad_value'] REPEATS 3 TIMES WITHIN 4 SECONDS` 
+Additionally, the ``Logs`` folder contains the monitoring logs for the two security controls, or NSFs, that were utilized: Suricata and Squid. Operational logs for the Nginx web server are also included.
 
-The pattern is written in the STIX patterning language and it is stored in the threat knowledge base according to the STIX data model. In order to perform the matching the logs are first converted into the STIX data model, in particular into STIX Cyber Observables. The corresponding converted Suricata monitoring logs appear in the ``stix_traffic_cyber_observable.json`` file in the ``Logs`` folder.
+The logs provide evidence of a security event, detected by matching them, after conversion to a specific format, against the following detection pattern: `[network-traffic:extensions.'http-request-ext'.request_header.'X-Malicious-Header' = 'bad_value'] REPEATS 3 TIMES WITHIN 4 SECONDS`.
+
+This pattern is written in the STIX patterning language and stored in the threat knowledge base according to the STIX data model. To facilitate matching, the logs are first converted into the STIX data model as STIX Cyber Observables (SCOs). The corresponding Suricata monitoring logs, converted to SCOs, can be found in the `stix_traffic_cyber_observable.json` file within the ``Logs`` folder.
